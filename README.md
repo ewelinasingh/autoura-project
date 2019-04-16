@@ -1,5 +1,19 @@
 # my-first-app
 
+## To do another push
+```
+git add .
+```
+
+```
+git commit -m "Commit Message"
+```
+
+```
+git push
+```
+
+
 ## Project setup
 ```
 npm install
