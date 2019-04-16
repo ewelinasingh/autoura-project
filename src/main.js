@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Router from 'vue-router';
+import { Icon } from 'leaflet'
+import 'leaflet/dist/leaflet.css'
 
 import Home from './views/home.vue'
 import Who from './views/who.vue'

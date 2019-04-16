@@ -10,7 +10,7 @@
         <div class='col-sm-12 col-md-6 full-height borders'>
             <div class='row' style='width:100%'>
                 <div class='col-sm-12 col-md-12 half-height borders' style='width:100%'>
-                    hi
+                    <Map/>
                 </div>
                 <div class='col-sm-12 col-md-12 half-height borders' style='width:100%'>
                     hey
@@ -24,9 +24,11 @@
 
 <script>
     import axios from 'axios'
+    import Map from '../components/Map.vue'
     
     export default {
       name: 'app',
+      components: {Map},
       data: function(){
       return {
         results: [],
