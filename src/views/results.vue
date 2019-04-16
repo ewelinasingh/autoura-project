@@ -3,17 +3,19 @@
   <div class='container-fluid'>
     <div class='row'>
         <div class='col-sm-12 col-md-6 full-height borders'>
-            <ul class="list-group result">
-              <li class="list-group-item" v-for="(stop, index) in results">{{stop.name}}</li>
+            <ul class="list-group result"> 
+            <!-- https://mdbootstrap.com/docs/jquery/javascript/scroll/ 
+            https://getbootstrap.com/docs/4.0/components/list-group/-->
+              <li class="list-group-item" v-bind:class="{'list-group-item-primary': stop.clickedOn == true }"  @click="resultClick(index)" @mouseover="resultOver(index)" @mouseleave="resultLeave(index)" v-for="(stop, index) in results">{{stop.name}}</li>
             </ul>
         </div>
         <div class='col-sm-12 col-md-6 full-height borders'>
             <div class='row' style='width:100%'>
                 <div class='col-sm-12 col-md-12 half-height borders' style='width:100%'>
-                    <Map/>
+                    <Map :results="results" ref='theMap'/>
                 </div>
                 <div class='col-sm-12 col-md-12 half-height borders' style='width:100%'>
-                    hey
+                    <Info :stop="clickedOn"/>
                 </div>
             </div>
         </div>
@@ -25,13 +27,17 @@
 <script>
     import axios from 'axios'
     import Map from '../components/Map.vue'
+    import Info from '../components/Info.vue'
     
     export default {
       name: 'app',
-      components: {Map},
+      components: {Map, Info},
       data: function(){
       return {
         results: [],
+        normalIcon: [25, 25],
+        largeIcon: [50, 50],
+        clickedOn: null
       }
     },
     
@@ -44,11 +50,33 @@
           .then(r=>{
               console.log(r)
               this.results=r.data.response.filter(r => r.stop_type == 'food-' + this.$route.query.type)
+              .map(r => {
+                r.iconSize = this.normalIcon;
+                return r;
+              });
           }) 
           .catch(error=>{
               console.log('there was an error');
               console.log(error.message)
           })
+      },
+      methods: {
+          resultOver: function(index){
+            this.results[index].iconSize = this.largeIcon;
+          },
+          resultLeave: function(index){
+            this.results[index].iconSize = this.normalIcon;
+          },
+          resultClick: function(index){
+              console.log(this.$refs.theMap);
+              for(let c = 0; c<this.results.length; c++) {
+                this.results[c].clickedOn = false;
+              }
+              
+              this.results[index].clickedOn = true;
+            this.clickedOn = this.results[index];
+            this.$refs.theMap.setClicked(index)
+          }
       }
     }
     

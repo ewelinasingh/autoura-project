@@ -3,9 +3,9 @@
   <div class="map">
     <l-map @update:zoom="zoomUpdate" @update:center="centerUpdate" :zoom="zoom" :center="center">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-      <l-marker :key="index" v-for="(stop, index) in results" :lat-lng="latLng(stop.latitude, stop.longitude)">
+      <l-marker :key="index" v-for="(stop, index) in results" :lat-lng="latLng(stop.location.geocode.lat, stop.location.geocode.lng)">
         <l-icon :icon-size="stop.iconSize" :icon-url="icon"> 
-        </l-icon>  
+        </l-icon>
       </l-marker>
     </l-map>
   </div>
@@ -33,8 +33,7 @@
             attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
             marker: L.latLng(47.413220, -1.219482),
             icon: foodicon,
-            iconSize: [15,15],
-            
+            iconSize: [25,25],
           }
         },
         
@@ -63,6 +62,10 @@
             },
             handleError() {
               console.log("Error has occured with GPS")
+            },
+            setClicked(index) {
+              this.zoom = 15;
+              this.center = L.latLng(this.results[index].location.geocode.lat, this.results[index].location.geocode.lng)
             }
         },
         created(){
