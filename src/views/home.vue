@@ -1,51 +1,80 @@
 <template>
   
   <div id='main' class='container-fluid'>
-    <h1> AUTOURA </h1>
-    <div class='row'>
-      <div class='col-sm-12 col-md-6'>
-        <h3> Log In</h3>
-        <br>
-        <form>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-          </div>
-          <button type="submit" class="btn btn-primary">LOG IN</button>
-        </form>
-      </div>
-      <div class='col-sm-12 col-md-6'>
-        <router-link to="/who" class="btn btn-info btn-lg biggerbutton"> Enter without logging in </router-link>
-      </div>
+    <div class="top-section">
+          <p><b>{{ info.name }}, {{ info.sys.country }}</b></p>
+          <p>{{ info.main.temp }}&deg;C</p>
+    </div>  
+    <div class='main-section'>
+      <h1> AUTOURA </h1>
+      <br>
+      <router-link to="/who" class="btn btn-info btn-lg biggerbutton"> Enter </router-link>
     </div>
+    
+    <div class="quote" v-if="quote !==null">
+      <span v-html="quote"> </span> - {{quoter}}
+    </div>
+        
   </div>
   
 </template>
 
 <script>
 
+  import axios from 'axios'
+    
   export default {
-    name: 'app',
+   name: 'app',
+   data: function(){
+     return {
+       quote: null,
+       quoter: null,
+       info: null
+     }
+   },
+   mounted () {
+        axios
+         .get('https://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=5391b57eadffcb9ee8d5647ebe4534fd')
+         .then(response => (this.info = response.data))
+   },
+   created(){
+     
+        axios.get('https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1')
+        .then(r=>{
+          this.quote = r.data[0].content
+          this.quoter = r.data[0].title
+            console.log(r)
+        }) 
+        .catch(error=>{
+            console.log('there was an error');
+            console.log(error.message)
+        })
+        
+    }
   }
+  
+  
   
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
     h1{
-        font-size: 5rem;
+        font-size: 3rem;
     }
     
-    .col-sm-12.col-md-6{
-      border: 1px solid black;
+    .quote{
+        display: flex;
+        flex-direction: column;
+        
     }
     
-    form{
-      width: 20vw;
+    .top-section{
+        display: flex;
+        flex-direction: column;
     }
 
 </style>
+
+
+

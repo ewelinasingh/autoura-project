@@ -8,9 +8,9 @@
 
 <script>
 
-export default {
-  name: 'app',
-}
+  export default {
+    name: 'app',
+  }
 
 </script>
 
@@ -32,6 +32,9 @@ export default {
     align-items: center;
     justify-content: center;
     text-align: center;
+    @media (max-width: 767px) {
+      height: auto;
+    }
   }
   
   .threequarters-height{

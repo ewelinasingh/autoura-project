@@ -2,19 +2,19 @@
   
   <div class='container-fluid'>
     <div class='row'>
-        <div class='col-sm-12 col-md-6 full-height borders'>
+        <div class='col-sm-12 col-md-6 full-height'>
             <ul class="list-group result"> 
             <!-- https://mdbootstrap.com/docs/jquery/javascript/scroll/ 
             https://getbootstrap.com/docs/4.0/components/list-group/-->
-              <li class="list-group-item" v-bind:class="{'list-group-item-primary': stop.clickedOn == true }"  @click="resultClick(index)" @mouseover="resultOver(index)" @mouseleave="resultLeave(index)" v-for="(stop, index) in results">{{stop.name}}</li>
+              <li class="list-group-item oneresult" v-bind:class="{'list-group-item-action list-group-item-primary': stop.clickedOn == true }"  @click="resultClick(index)" @mouseover="resultOver(index)" @mouseleave="resultLeave(index)" v-for="(stop, index) in results">{{stop.name}}</li>
             </ul>
         </div>
-        <div class='col-sm-12 col-md-6 full-height borders'>
+        <div class='col-sm-12 col-md-6 full-height'>
             <div class='row' style='width:100%'>
-                <div class='col-sm-12 col-md-12 half-height borders' style='width:100%'>
+                <div class='col-sm-12 col-md-12 half-height' style='width:100%'>
                     <Map :results="results" ref='theMap'/>
                 </div>
-                <div class='col-sm-12 col-md-12 half-height borders' style='width:100%'>
+                <div class='col-sm-12 col-md-12 half-height' style='width:100%'>
                     <Info :stop="clickedOn"/>
                 </div>
             </div>
@@ -35,8 +35,8 @@
       data: function(){
       return {
         results: [],
-        normalIcon: [25, 25],
-        largeIcon: [50, 50],
+        normalIcon: [35, 35],
+        largeIcon: [60, 60],
         clickedOn: null
       }
     },
@@ -83,16 +83,17 @@
     
 </script>
 
-<style lang="scss">
-
-   .borders{
-       border: 1px solid black;
-   }
+<style lang="scss" scoped>
    
    .result{
        overflow-y: scroll;
        height: 100%;
        width: 100%;
+       cursor: pointer;
+   }
+   
+   .oneresult:hover{
+     background: #e6f2ff;
    }
 
 </style>

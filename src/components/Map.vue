@@ -26,14 +26,14 @@
     data: function(){
         return {
             zoom: 11,
-            center: L.latLng(51.5074, 0.1278),
-            currentCenter: L.latLng(34.219246, -111,922295),
+            center: L.latLng(51.507351, -0.127758),
+            currentCenter: L.latLng(51.507351, -0.127758),
             currentZoom: 11,
             url:'https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=bedd86692b784529a8001f6271a012d5',
             attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-            marker: L.latLng(47.413220, -1.219482),
+            marker: L.latLng(51.507351, -0.127758),
             icon: foodicon,
-            iconSize: [25,25],
+            iconSize: [35,35]
           }
         },
         
@@ -79,13 +79,9 @@
         }
     }
   
-  
-  
-  
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
   .map{
         height: 100%;
         width: 100%;

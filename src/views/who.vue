@@ -33,7 +33,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
     .col-sm-12.col-md-4{
         border: 1px black solid;
