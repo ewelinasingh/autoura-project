@@ -6,7 +6,7 @@
         <p>Address: {{stop.location.address}} <br> {{stop.location.country}}</p>
         <p>{{stop.location.directions}}</p>
         <button class='btn btn-primary btn-lg' v-on:click='alertClick()'>Directions</button>
-        <button class='btn btn-outline-primary btn-lg' :to="stop.website_url" v-if="stop.website_url !== ''">Visit Website</button>
+        <a :href="stop.website_url" class='btn btn-outline-primary btn-lg' v-if="stop.website_url !== ''">Visit Website</a>
     </div>
 </template>
 
@@ -16,7 +16,7 @@
         props : ['stop'],
         methods:{
             alertClick: function(){
-                alert("Alert pop up")
+                alert("This button would take the user to a map which would navigate them to the location.")
             }
         }
     }
