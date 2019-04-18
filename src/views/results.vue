@@ -1,11 +1,8 @@
 <template>
-  
   <div class='container-fluid'>
     <div class='row'>
         <div class='col-sm-12 col-md-6 full-height'>
             <ul class="list-group result"> 
-            <!-- https://mdbootstrap.com/docs/jquery/javascript/scroll/ 
-            https://getbootstrap.com/docs/4.0/components/list-group/-->
               <li class="list-group-item oneresult" v-bind:class="{'list-group-item-action list-group-item-primary': stop.clickedOn == true }"  @click="resultClick(index)" @mouseover="resultOver(index)" @mouseleave="resultLeave(index)" v-for="(stop, index) in results">{{stop.name}}</li>
             </ul>
         </div>
@@ -21,7 +18,6 @@
         </div>
     </div>
   </div>
-  
 </template>
 
 <script>

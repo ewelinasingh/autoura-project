@@ -32,7 +32,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    @media (max-width: 767px) {
+    @media(max-width: 767px){
       height: auto;
     }
   }

@@ -1,15 +1,12 @@
 <template>
-  
   <div class="map">
     <l-map @update:zoom="zoomUpdate" @update:center="centerUpdate" :zoom="zoom" :center="center">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
       <l-marker :key="index" v-for="(stop, index) in results" :lat-lng="latLng(stop.location.geocode.lat, stop.location.geocode.lng)">
-        <l-icon :icon-size="stop.iconSize" :icon-url="icon"> 
-        </l-icon>
+        <l-icon :icon-size="stop.iconSize" :icon-url="icon"></l-icon>
       </l-marker>
     </l-map>
   </div>
-  
 </template>
 
 <script>

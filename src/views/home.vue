@@ -1,38 +1,34 @@
 <template>
-  
   <div id='main' class='container-fluid'>
     <div class="top-section">
-          <p><b>{{ info.name }}, {{ info.sys.country }}</b></p>
-          <p>{{ info.main.temp }}&deg;C</p>
+        <p><b>{{ info.name }}, {{ info.sys.country }}</b></p>
+        <p>{{ info.main.temp }}&deg;C</p>
     </div>  
     <div class='main-section'>
       <h1> AUTOURA </h1>
       <br>
       <router-link to="/who" class="btn btn-info btn-lg biggerbutton"> Enter </router-link>
     </div>
-    
-    <div class="quote" v-if="quote !==null">
-      <span v-html="quote"> </span> - {{quoter}}
+    <div class="bottom-section" v-if="quote !==null">
+      <span v-html="quote"></span> - {{quoter}}
     </div>
-        
   </div>
-  
 </template>
 
 <script>
 
   import axios from 'axios'
     
-  export default {
+  export default{
    name: 'app',
    data: function(){
-     return {
+     return{
        quote: null,
        quoter: null,
        info: null
      }
    },
-   mounted () {
+   mounted(){
         axios
          .get('https://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=5391b57eadffcb9ee8d5647ebe4534fd')
          .then(response => (this.info = response.data))
@@ -46,10 +42,9 @@
             console.log(r)
         }) 
         .catch(error=>{
-            console.log('there was an error');
+            console.log('An error has occurred.');
             console.log(error.message)
         })
-        
     }
   }
   
@@ -63,15 +58,31 @@
         font-size: 3rem;
     }
     
-    .quote{
-        display: flex;
-        flex-direction: column;
-        
+    .container-fluid{
+        align-items: flex-start;
     }
     
     .top-section{
-        display: flex;
-        flex-direction: column;
+        position: relative;
+        top: -200px;
+        @media(max-height: 450px){
+            top: 0;
+        }
+        @media(max-width: 767px){
+            top: 0;
+        }
+    }
+    
+    
+    .bottom-section{
+        position: relative;
+        top: 200px;
+        @media(max-height: 450px){
+            top: 0;
+        }
+        @media(max-width: 767px){
+            top: 0px;
+        }
     }
 
 </style>
