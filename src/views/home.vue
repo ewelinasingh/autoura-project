@@ -1,4 +1,5 @@
 <template>
+    
   <div id='main' class='container-fluid'>
     <div class="top-section">
         <p><b>{{ info.name }}, {{ info.sys.country }}</b></p> 
@@ -16,11 +17,18 @@
 </template>
 
 <script>
-
+// https://github.com/nuxt/vue-meta 
   import axios from 'axios'
     
   export default{
    name: 'app',
+   metaInfo: {
+      title: 'Autoura- Home',
+      meta: [
+      {charset: 'utf-8'},
+      {name: 'description', content: 'Find your perfect dining experience with Autoura.'}
+        ]
+    },
    data: function(){
      return{
        quote: null,

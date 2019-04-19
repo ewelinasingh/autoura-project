@@ -17,6 +17,8 @@
     "popper.js": "^1.15.0",
     "sass-loader": "^7.1.0",
     "vue": "^2.6.6",
+    "vue-headful": "^2.0.1",
+    "vue-meta": "^1.6.0",
     "vue-router": "^3.0.4",
     "vue2-leaflet": "^2.0.3",
     "webpack": "^4.29.6"

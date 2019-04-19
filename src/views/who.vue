@@ -30,6 +30,13 @@
 
 export default {
   name: 'app',
+  metaInfo: {
+      title: 'Autoura - Who',
+      meta: [
+      {charset: 'utf-8'},
+      {name: 'description', content: 'Find your perfect dining experience with Autoura.'}
+        ]
+    }
 }
 </script>
 

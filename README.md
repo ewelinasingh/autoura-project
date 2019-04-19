@@ -14,6 +14,13 @@ git push
 ```
 
 
+## To deploy 
+
+```
+ npm run build 
+ firebase deploy --only hosting --project autoura-project
+```
+
 ## Project setup
 ```
 npm install
