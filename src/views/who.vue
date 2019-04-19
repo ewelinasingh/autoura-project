@@ -74,7 +74,7 @@ export default {
             background-image: url('../assets/teenagers-min.jpg');
         }
         &.group{
-            background-image: url('../assets/group-min.jpg');+
+            background-image: url('../assets/group-min.jpg');
         }
     }
     
