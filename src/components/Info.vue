@@ -22,7 +22,7 @@
     }
 </script>
 
-<style>
+<style lang="scss" scoped>
     .info{
         height: 100%;
         width: 100%;
