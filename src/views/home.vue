@@ -1,7 +1,7 @@
 <template>
   <div id='main' class='container-fluid'>
     <div class="top-section">
-        <p><b>{{ info.name }}, {{ info.sys.country }}</b></p>
+        <p><b>{{ info.name }}, {{ info.sys.country }}</b></p> 
         <p>{{ info.main.temp }}&deg;C</p>
     </div>  
     <div class='main-section'>
