@@ -1,0 +1,10 @@
+{
+  "name": "autoura-project",
+  
+  "version": 2,
+  
+  "alias": "gh-pages",
+  "files": [
+    "dist"
+  ]
+}

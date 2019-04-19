@@ -7,7 +7,7 @@
     <div class='main-section'>
       <h1> AUTOURA </h1>
       <br>
-      <router-link to="/who" class="btn btn-info btn-lg biggerbutton"> Enter </router-link>
+      <router-link to="/who" class="btn btn-info btn-lg"> Enter </router-link>
     </div>
     <div class="bottom-section" v-if="quote !==null">
       <span v-html="quote"></span> - {{quoter}}
