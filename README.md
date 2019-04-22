@@ -69,4 +69,6 @@ firebase deploy --only hosting --project autoura-project
 7. Click on the 'WEBSITE' button to be redirected to the place's website.
     
 
+Thank you!
+
 
